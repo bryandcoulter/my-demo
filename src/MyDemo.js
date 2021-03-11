@@ -1,5 +1,4 @@
 import { LitElement, html, css } from 'lit-element';
-import { openWcLogo } from './open-wc-logo.js';
 import MyContainer from './components/my-container/my-container.js';
 import MyCard from './components/cards/my-card/my-card.js';
 import MyButton from './components/buttons/my-button/my-button.js';
