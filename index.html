@@ -8,13 +8,415 @@
   <base href="/">
 
   <style>
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background-color: #ededed;
+      @keyframes inDown {
+    0% {
+      transform: translate3d(0, -55px, 0);
     }
+
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  :host {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    --application-color: #445565;
+    --application-icon-margin: 6px 0 0 0;
+    --my-app-icon: #8c989f;
+    --my-date-picker-day-range: rgba(58, 174, 218, .14);
+    --my-date-range-toggle-text: rgba(255, 255, 255, .6);
+
+    /* JHA Component Color Custom Variables */
+    --my-color-primary: #006ee4;
+    --my-color-success: #118315;
+    --my-color-danger: #DB2012;
+    --my-color-warning:#C98702;
+    --my-color-purple: #7D57C1;
+    --my-color-teal: #008091;
+    --my-color-dark: #191919;
+    --my-color-gray-medium: #707070;
+    --my-color-gray-light: #e6e6e6;
+    --my-color-gray-lighter: #f2f2f2;
+    --my-color-neutral: #8d99a0;
+    --my-color-muted: var(--my-text-muted);
+    --my-text-dark: #191919;
+    --my-text-base: #707070;
+    --my-color-light: #8c989f;
+    --my-text-light: #8c989f;
+    --my-text-white: #ffffff;
+    --my-text-success: #118315;
+    --my-text-danger: #DB2012;
+    --my-text-warning: #BB5C04;
+    --my-text-theme: var(--my-color-primary);
+    --my-text-neutral: #8d99a0;
+    --my-text-muted: #b0b0b0;
+    --my-background-color: #f8f8f8;
+    --my-component-background-color: #ffffff;
+    --my-focus-highlight-color: rgba(153,153,153,.12);
+    --my-text-size-base: 14px;
+    --my-border-color: #e4e7ea;
+    --my-border-color-hover: #d3d8dd;
+
+    --my-content-inset: 24px;
+
+    --my-accounts-card-balance-title-size: 13px;
+    --my-accounts-card-balance-title-color: var(--my-text-light);
+    --my-accounts-card-balance-title-top-margin: 0;
+    --my-accounts-card-fi-info-size: 13px;
+    --my-accounts-card-fi-info-color: var(--my-text-light);
+    --my-accounts-card-fi-info-top-margin: 0;
+    --my-accounts-card-title-size: 16px;
+    --my-accounts-card-title-color: var(--my-text-dark);
+    --my-accounts-card-title-weight: 400;
+    --my-button-text-size: 14px;
+    --my-card-article-margin-left: 24px;
+    --my-card-article-padding-right: 24px;
+    --my-card-article-margin-bottom: 18px;
+    --my-card-article-padding-bottom: 18px;
+    --my-card-footer-size: 16px;
+    --my-card-footer-margin-left: 24px;
+    --my-card-footer-padding-top: 12px;
+    --my-card-footer-padding-right: 24px;
+    --my-card-footer-padding-bottom: 12px;
+    --my-card-header-margin-left: 24px;
+    --my-card-header-padding-top: 12px;
+    --my-card-header-padding-right: 24px;
+    --my-card-header-padding-bottom: 8px;
+    --my-card-header-display: flex;
+    --my-card-header-display-ie: flex;
+
+    --my-close-icon-color: var(--my-color-muted);
+
+    --my-currency-color: var(--my-text-dark);
+    --my-currency-size: 14px;
+
+    --my-date-picker-day-headers-text-transform: none;
+
+    --my-date-range-toggle-background: #dfe1e3;
+    --my-date-range-toggle-border: rgb(218, 220, 222);
+
+    --my-form-control-input-disabled-background: rgba(238,241,244, 0.7);
+
+    --my-form-floating-group-filled-background: var(--my-background-color);
+    --my-form-floating-group-underline-background: var(--my-border-color);
+
+    --my-icon-computer-device-fill: #3D454D;
+
+    --my-list-item-vertical-spacing: 16px;
+    --my-list-item-horizontal-spacing: 24px;
+
+    --my-dropdown-menu-item-display: flex;
+    --my-dropdown-menu-item-margin: 8px;
+    --my-dropdown-menu-item-background-hover: var(--my-color-gray-light);
+
+    --my-pagination-dot-color: var(--my-color-neutral);
+    --my-pagination-dot-color-selected: var(--my-color-primary);
+
+    --my-progress-color: var(--my-color-muted);
+    --my-progress-card-border-width: 2px;
+
+    --my-search-box-background: #edeeef;
+    --my-search-box-border: #e7e9ea;
+
+    --my-tab-item-color: var(--my-text-base);
+    --my-tab-item-button-color: var(--my-text-dark);
+    --my-tab-item-color-active: var(--my-color-primary);
+    --my-tab-item-text-transform: capitalize;
+    --my-tab-item-padding: 0;
+
+    --my-well-background-color: #f5f6f6;
+
+    --transaction-list-deposit-amount-color: var(--my-color-success);
+
+    /* Banno Online Component Variables */
+    --account-card-background-primary-color:var(--my-color-primary);
+    --account-card-background-secondary-color:var(--my-color-neutral);
+    --account-card-primary-text-color:var(--my-text-white);
+    --account-card-secondary-text-color:var(--my-text-white);
+    --action-button-active-color:var(--my-color-primary);
+    --action-button-color:var(--my-color-primary);
+    --action-button-disabled-color:var(--my-color-light);
+    --action-button-focused-color:var(--my-color-primary);
+    --action-button-hover-color:var(--my-color-primary);
+    --action-button-pressed-color:var(--my-color-primary);
+    --action-button-text-color:var(--my-text-white);
+    --action-button-text-disabled-color:var(--my-text-light);
+    --action-button-text-focused-color:var(--my-text-white);
+    --action-button-text-pressed-color:var(--my-text-white);
+    --body-footer-color:var(--my-color-neutral);
+    --body-header-background-color:var(--application-color);
+    --body-header-icon-color:var(--my-text-white);
+    --body-header-title-color:var(--my-text-white);
+    --body-text-alert-color:var(--my-color-warning);
+    --body-text-highlight-color:var(--my-color-success);
+    --body-text-primary-color:var(--my-text-base);
+    --body-text-secondary-color:var(--my-text-light);
+    --body-text-theme-color:var(--my-text-theme);
+    --card-title-text-color:var(--my-text-light);
+    --completed-color:var(--my-color-success);
+    --contact-button-color:var(--my-color-light);
+    --contact-button-disabled-color:var(--my-color-light);
+    --contact-button-focused-color:var(--my-color-primary);
+    --contact-button-icon-color:var(--my-text-light);
+    --contact-button-icon-disabled-color:var(--my-focus-highlight-color);
+    --contact-button-icon-focused-color:var(--my-color-primary);
+    --contact-button-icon-pressed-color:var(--my-text-white);
+    --contact-button-pressed-color:var(--my-color-primary);
+    --contact-button-text-color:var(--my-text-base);
+    --contact-button-text-disabled-color:var(--my-focus-highlight-color);
+    --contact-button-text-focused-color:var(--my-color-primary);
+    --contact-button-text-pressed-color:var(--my-text-white);
+    --controller-view-background-color:var(--my-color-neutral);
+    --dashboard-container-background-color:var(--my-background-color);
+    --deposit-amount-color:var(--my-text-base);
+    --divider-color:var(--my-border-color);
+    --error-background-color:var(--my-color-warning);
+    --error-text-color:var(--my-text-white);
+    --focus-highlight-color:var(--my-focus-highlight-color);
+    --indicator-background-color:var(--my-color-warning);
+    --indicator-text-color:var(--my-text-white);
+    --inline-button-color:var(--my-text-white);
+    --inline-button-disabled-color:var(--my-text-white);
+    --inline-button-focused-color:var(--my-color-primary);
+    --inline-button-pressed-color:var(--my-color-primary);
+    --inline-button-text-active-color:var(--my-color-primary);
+    --inline-button-text-color:var(--my-text-theme);
+    --inline-button-text-disabled-color:var(--my-color-light);
+    --inline-button-text-focused-color:var(--my-color-primary);
+    --inline-button-text-hover-color:var(--my-color-primary);
+    --inline-button-text-pressed-color:var(--my-text-white);
+    --inline-icon-background-color:var(--my-color-primary);
+    --inline-icon-background-disabled-color:var(--my-color-light);
+    --inline-icon-background-focused-color:var(--my-color-primary);
+    --inline-icon-background-pressed-color:var(--my-color-primary);
+    --inline-icon-button-color:var(--my-color-primary);
+    --inline-icon-button-disabled-color:var(--my-text-light);
+    --inline-icon-button-focused-color:var(--my-color-primary);
+    --inline-icon-button-pressed-color:var(--my-color-primary);
+    --inline-icon-color:var(--my-text-white);
+    --inline-icon-disabled-color:var(--my-text-white);
+    --inline-icon-focused-color:var(--my-text-white);
+    --inline-icon-pressed-color:var(--my-text-white);
+    --inline-icon-text-color:var(--my-text-base);
+    --inline-icon-text-disabled-color:var(--my-color-light);
+    --inline-icon-text-focused-color:var(--my-color-primary);
+    --inline-icon-text-pressed-color:var(--my-text-white);
+    --input-entered-text-color:var(--my-text-theme);
+    --input-placeholder-text-color:var(--my-text-light);
+    --list-divider-text-color:var(--my-text-base);
+    --login-container-background-color:var(--my-component-background-color);
+    --magnetic-ad-background-color:var(--my-color-dark);
+    --magnetic-ad-text-color:var(--my-text-white);
+    --menu-background-color:var(--my-text-white);
+    --menu-icon-background-color:var(--my-text-white);
+    --menu-icon-background-disabled-color:var(--my-text-white);
+    --menu-icon-background-focused-color:var(--my-text-white);
+    --menu-icon-background-pressed-color:var(--my-text-white);
+    --menu-icon-color:var(--my-color-primary);
+    --menu-icon-disabled-color:var(--my-color-primary);
+    --menu-icon-focused-color:var(--my-color-primary);
+    --menu-icon-pressed-color:var(--my-color-primary);
+    --menu-item-color:var(--my-text-white);
+    --menu-item-disabled-color:var(--my-color-primary);
+    --menu-item-divider-color:var(--my-border-color);
+    --menu-item-focused-color:var(--my-color-primary);
+    --menu-item-pressed-color:var(--my-color-primary);
+    --menu-text-color:var(--my-text-base);
+    --menu-text-disabled-color:var(--my-text-light);
+    --menu-text-focused-color:var(--my-text-base);
+    --menu-text-pressed-color:var(--my-text-base);
+    --navigation-bar-color:var(--my-text-theme);
+    --navigation-bar-icon-color:var(--my-color-light);
+    --navigation-bar-item-text-color:var(--my-color-light);
+    --navigation-bar-title-color:var(--my-text-white);
+    --pin-dot-color:var(--my-color-primary);
+    --primary-content-background-color:var(--my-text-white);
+    --primary-icon-background-color:var(--my-color-primary);
+    --primary-icon-color:var(--my-text-white);
+    --rejected-color:var(--my-color-warning);
+    --secondary-content-background-color:var(--my-well-background-color);
+    --secondary-content-background-hover-color:var(--my-color-light);
+    --secondary-icon-background-color:var(--my-color-primary);
+    --secondary-icon-color:var(--my-text-white);
+    --secondary-page-container-background-color:var(--my-background-color);
+    --status-bar-action-mode-color:var(--my-text-theme);
+    --status-bar-color:var(--my-color-primary);
+    --step-indicator-active-color:var(--my-color-primary);
+    --step-indicator-inactive-color:var(--my-color-dark);
+    --toggle-switch-active-color:var(--my-color-success);
+    --toggle-switch-inactive-color:var(--my-text-white);
+    --toolbar-action-mode-color:var(--my-color-primary);
+    --toolbar-action-mode-icon-color:var(--my-text-white);
+    --toolbar-action-mode-title-color:var(--my-text-white);
+    --toolbar-color:var(--my-text-theme);
+    --toolbar-focus-highlight-color:var(--my-focus-highlight-color);
+    --toolbar-icon-color:var(--my-text-white);
+    --toolbar-title-color:var(--my-text-white);
+    --transaction-list-deposit-amount-color:var(--my-color-success);
+    --transaction-list-withdrawal-amount-color:var(--my-text-base);
+    --withdrawal-amount-color:var(--my-text-base);
+
+    --my-list-item-bottom-border: var(--my-color-gray-light, #e6e6e6);
+
+    /* base site styling */
+    font-family: "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: var(--my-text-size-base);
+    line-height: 1.5;
+    margin: 0px;
+    background-color: var(--my-background-color);
+    color: var(--my-text-base);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    color: var(--my-text-dark);
+    font-weight: 500;
+  }
+  h1 {
+    font-size: 24px;
+  }
+  h2 {
+    font-size: 21px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 16px;
+  }
+  button {
+    touch-action: manipulation;
+    background: none;
+    border: none;
+    color: var(--my-text-dark);
+    cursor: pointer;
+    display: block;
+    font-family: "Roboto", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    -webkit-appearance: none;
+  }
+  a {
+    text-decoration: none;
+    color: var(--my-color-primary);
+    cursor: pointer;
+  }
+  a:hover,
+  a:active {
+    color: var(--my-color-primary);
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  a:hover {
+    background-color: #e4e7ea;
+    border-radius: 6px;
+  }
+  a[small] {
+    font-size: 13px;
+  }
+  a[x-small] {
+    font-size: 12px;
+  }
+  a[active],
+  a:active{
+    background-color: rgba(1, 111, 230, 0.1);
+    color: var(--my-color-primary);
+    font-weight: 500;
+    border-radius: 6px;
+  }
+  a[active] svg,
+  a:active svg {
+    fill: var(--my-color-primary);
+  }
+  svg {
+    width: 24px;
+    height: 24px;
+    fill: #444444;
+  }
+  hr {
+    box-sizing: content-box;
+    height: 1px;
+    background-color: var(--my-border-color);
+    border: 0;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  label {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  *[flex] {
+    display: flex !important;
+    align-items: center;
+  }
+  *[title] {
+    color: var(--my-text-dark);
+    font-size: 16px;
+    font-weight: 400;
+  }
+  *[sub-title] {
+    font-size: 13px;
+    font-weight: 400;
+  }
+  *[bold] {
+    font-weight: 600;
+  }
+  *[semi-bold] {
+    font-weight: 500;
+  }
+  header[dialog] {
+    padding: 32px;
+    border-bottom: 1px solid var(--my-border-color);
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    text-align: center;
+    position: relative;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--my-text-dark);
+  }
+  my-button[dialog] {
+    --my-button-line-height: 12px;
+    position: absolute;
+    top: 30%;
+    right: 20px;
+    opacity: 0.6;
+    transition: opacity 0.3s cubic-bezier(0.1,.5,.1,1);
+  }
+  my-icon-close[dialog] {
+    width: 18px;
+    height: 18px;
+    fill: var(--my-color-gray-medium);
+  }
+  article[dialog] {
+    max-height: calc(100vh - 300px);
+    color: var(--my-text-base);
+    padding: 32px;
+    overflow-y: auto;
+  }
+  footer[dialog] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-bottom-left-radius: 1px;
+    border-bottom-right-radius: 1px;
+    border-top: 1px solid var(--my-border-color);
+    padding: 32px;
+  }
+  sup {
+    font-size: 75%;
+    position: relative;
+    top: 1.5px;
+  }
   </style>
   <title>my-demo</title>
 </head>
