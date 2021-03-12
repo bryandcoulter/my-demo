@@ -10,7 +10,7 @@ npm install
 npm run-script start
 ```
 
-the start command will give you a network path to the app, in chrome that seems to be he best way to get it to run.
+The start command will give you a network path to the app, in chrome that seems to be the best way to get it to run.
 
 ## Scripts
 
@@ -32,15 +32,15 @@ this will create the `/src/components/my-new-element/` directory containing 2 fi
 
 `my-new-element.js # registration`
 
-# Create an executable bundle of our components
-When you run the build command it will create a UMD bundle of your components
+# Create an executable bundle of the components
+When you run the build command it will create a UMD bundle of the components
 
 Right now it is configured to get all components that are a dependency of the my-demo main component.
 
 If you wish to add other components just import them in the bundle-dep.js file.
 
 # Static Demo
-The static demo has an index page what will allow you to test your bundle. The new bundle automatically gets generate in that folder when you run the build command.
+The static demo has an index page what will allow you to test your bundle. The new bundle automatically gets generated in that folder when you run the build command.
 
 With this just being a static html page you can run `http-server` on the static demo dir and load the page.
 
