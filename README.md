@@ -20,3 +20,17 @@ the start command will give you a network path to the app, in chrome that seems 
 - `test` runs your test suite with Web Test Runner
 - `lint` runs the linter for your project
 
+
+# Initializing a new lit-element component
+You can use hygen to quickly scaffold a new component. For a LitElement component:
+
+`hygen my-component new my-new-element --path path/from/root`
+
+path example `src/components`
+
+this will create the `/src/components/my-new-element/` directory containing 2 files:
+
+`MyNewElement.js # class`
+
+`my-new-element.js # registration`
+

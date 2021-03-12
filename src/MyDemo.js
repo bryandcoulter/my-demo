@@ -2,6 +2,7 @@ import { LitElement, html, css } from 'lit-element';
 import MyContainer from './components/my-container/my-container.js';
 import MyCard from './components/cards/my-card/my-card.js';
 import MyButton from './components/buttons/my-button/my-button.js';
+import MyNewElement from './components/my-new-element/my-new-element.js'
 
 export class MyDemo extends LitElement {
   static get properties() {
@@ -42,7 +43,9 @@ export class MyDemo extends LitElement {
           <my-button sync danger>Danger Button</my-button>
         </my-card>
         <my-card>
-          <header slot="header">Card 2</header>
+          <header slot="header">
+            <my-new-element></my-new-element>
+          </header>
           <my-button sync>Hello</my-button>
           <my-button sync danger>Danger Button</my-button>
         </my-card>

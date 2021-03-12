@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit-element';
-import { myStyles } from '../../styles/My-styles.js';
+import { myStyles } from '../../styles/my-styles.js';
 
 const styles = css`
   @keyframes spin {
