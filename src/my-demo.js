@@ -1,3 +1,3 @@
-import { MyDemo } from './MyDemo.js';
-
+import MyDemo from './MyDemo.js';
 customElements.define('my-demo', MyDemo);
+export default MyDemo;

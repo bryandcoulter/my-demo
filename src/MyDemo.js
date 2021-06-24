@@ -2,9 +2,13 @@ import { LitElement, html, css } from 'lit-element';
 import MyContainer from './components/my-container/my-container.js';
 import MyCard from './components/cards/my-card/my-card.js';
 import MyButton from './components/buttons/my-button/my-button.js';
-import MyNewElement from './components/my-new-element/my-new-element.js'
+import MyNewElement from './components/my-new-element/my-new-element.js';
+import myAppRouteTree from './routing/routes/route-tree.js';
+import Router from '@jack-henry/web-component-router';
+import routeMixin from '@jack-henry/web-component-router/routing-mixin.js';
+import pageJs from 'page';
 
-export class MyDemo extends LitElement {
+export default class MyDemo extends routeMixin(LitElement) {
   static get properties() {
     return {
       title: { type: String },
@@ -32,6 +36,22 @@ export class MyDemo extends LitElement {
   constructor() {
     super();
     this.title = 'My app';
+    this.router = new Router();
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+
+    this.router.routeTree = myAppRouteTree;
+    // Define this instance as the root element
+    this.router.routeTree.getValue().element = this;
+    
+    
+    this.router.start();
+  }
+
+  async routeEnter(currentNode, nextNodeIfExists, routeId, context) {
+    return super.routeEnter(currentNode, nextNodeIfExists, routeId, context);
   }
 
   render() {
@@ -49,6 +69,7 @@ export class MyDemo extends LitElement {
           <my-button sync>Hello</my-button>
           <my-button sync danger>Danger Button</my-button>
         </my-card>
+        <slot></slot>
       </my-container>
     `;
   }
